@@ -3,7 +3,7 @@
 ## Exercise 09: Using docker-compose to orchestrate multiple containers
 In this exercise we want you to experiment with docker-compose. It is great that you can run one container, but what if you need more
 
-* First clone the github repository https://github.com/renevanosnabrugge/vslive2020-cw.git in a directory on your local machine
+* First clone the github repository https://github.com/XpiritBV/vslive2020-cw in a directory on your local machine
 * Open the solution in Visual Studio and build
 
 You can start the solution, but it will not run. There is no database, and there are dependencies in the projects. Let's try to solve that with docker
