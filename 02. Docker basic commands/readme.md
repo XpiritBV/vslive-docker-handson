@@ -20,11 +20,11 @@ docker ps -a
 docker images
 ```
 
-- Finding images on docker hub
+- Finding images on Docker hub
 ```
 docker search microsoft
 ```
-> There are a lot more Linux containers available. Checkout https://hub.docker.com to find base images. Right click the whale icon in your tray to switch to Linux containers and try docker search <product> again. E.g. docker search   
+> There are a lot more Linux containers available. Checkout https://hub.docker.com to find base images. Right click the whale icon in your tray to switch to Linux containers and try Docker search <product> again. E.g. docker search   
 
 - Running a container in the background (-d)
 ```

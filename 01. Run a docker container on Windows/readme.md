@@ -1,11 +1,11 @@
 # Hands-on labs Introduction to Docker
 
-## Exercise 01: Run a docker container on Windows
+## Exercise 01: Run a Docker container on Windows
 In this exercise you will run a container to inspect the concepts of immutability. For that we are going to use Docker.
 
 - Open a commandline 
-- Verify that docker is correctly installed by running `docker version`. 
-- Check that the docker **server** OS is Windows
+- Verify that Docker is correctly installed by running `docker version`. 
+- Check that the Docker **server** OS is Windows
 
 ```
 Server: Docker Engine - Community

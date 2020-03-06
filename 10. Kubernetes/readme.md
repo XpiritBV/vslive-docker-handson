@@ -1,7 +1,7 @@
 # Hands-on labs Introduction to Kubernetes
 
 ## Exercise 10: Hosting your containers in Kubernetes
-In the previous exercise, you create the retro gaming app in a set of containers. We used docker compose in the end to get all the containers running locally on your machine. Now we are going to move these containers into the Kubernetes cluster that is available for you to use.
+In the previous exercise, you create the retro gaming app in a set of containers. We used Docker compose in the end to get all the containers running locally on your machine. Now we are going to move these containers into the Kubernetes cluster that is available for you to use.
 
 ### Validate you can access the cluster
 In order to be able to work with the cluster, you need to get a command-line tool on your machine that interacts with the Kubernetes cluster.
@@ -49,7 +49,7 @@ Next you issue the following commandline:
 Both will have the same result. We prefer to use the file, since it makes things more reproducible
 
 ### Deploy the WebAPI
-We already pre-cooked a container image for you and pushed this to the docker hub. We can now define in a yaml specification we want to deploy our WebAPI service. for this create a yaml file with the name `webapi.yaml` and paste in the following contents:
+We already pre-cooked a container image for you and pushed this to the Docker hub. We can now define in a yaml specification we want to deploy our WebAPI service. for this create a yaml file with the name `webapi.yaml` and paste in the following contents:
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
