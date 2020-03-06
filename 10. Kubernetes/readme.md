@@ -1,19 +1,19 @@
 # Hands-on labs Introduction to Kubernetes
 
-## Exercise 10: Hosting your containers in kubernetes
+## Exercise 10: Hosting your containers in Kubernetes
 In the previous exercise, you create the retro gaming app in a set of containers. We used docker compose in the end to get all the containers running locally on your machine. Now we are going to move these containers into the Kubernetes cluster that is available for you to use.
 
-### Validating you can access the cluster
-In order to be able to work with the cluster you need to get a command line tool on your machine that interacts with the kubernetes cluster.
-You can get this tool downloaded to your machine by using the following azure commandline:
+### Validate you can access the cluster
+In order to be able to work with the cluster, you need to get a command-line tool on your machine that interacts with the Kubernetes cluster.
+You can get this tool downloaded to your machine by using the following azure command-line:
 
 `az aks install-cli`
 
-After the command is done, a folder is created with the name `.azure-kubectl` In this folder there is the executable `kubectl.exe` which is the command line tool. When you want to run this from any location on your machine you need to set the path in the environment of your system. In the taskbar, use the search option and search for `environment` this will show the option to open the control panel where you can set the environment variables on your system. Pick the `system variables` option and add to the path specification the folder that contains `kubectl.exe`
+After the command is done, a folder is created with the name `.azure-kubectl` In this folder, there is the executable `kubectl.exe` which is the command-line tool. When you want to run this from any location on your machine you need to set the path in the environment of your system. In the taskbar, use the search option and search for `environment` this will show the option to open the control panel where you can set the environment variables on your system. Pick the `system variables` option and add to the path specification the folder that contains `kubectl.exe`
 
 Now we have kubectl available, but we need to tool to authenticate against our cluster that is ready for you to use. For this go to the git repo and copy the folder with the name `.kube` and copy it to the local computer user directory `c:\user\student` You should now have a folder `c:\user\student\.kube` that contains the configuration to connect to the cluster.
 
-To validate that all is working you can run the following commandline: `kubectl get nodes` and this should return something similar like the following:
+To validate that all is working you can run the following command-line: `kubectl get nodes` and this should return something similar like the following:
 ```
 NAME                                STATUS   ROLES   AGE   VERSION
 aks-nodepool1-77988509-vmss000000   Ready    agent   10d   v1.15.7
@@ -43,7 +43,7 @@ kind: Namespace
 metadata:
   name: student<your unique number>
 ```
-and next you issue the following commandline:
+Next you issue the following commandline:
 `kubectl apply -f mynamespace.yaml`
 
 Both will have the same result. We prefer to use the file, since it makes things more reproducible
@@ -107,7 +107,7 @@ spec:
 ```
 Please don't forget to replace the namespace with the correct number of the namespace you created.
 
-><b>note:</b> In the specification you see some environment variables being set. One of them is KeyValtName and the other KeyVaultSecret. these values help the web api get the connectionstring to the database in a secure way, using azure keyvault. It goes beyond this workshop, but it is enough to know we pre-provisioned the keyvault in azure and with the data you provide here on the commandline you get the ability to securely retrieve the credentials form the keyvault. 
+><b>note:</b> In the specification you see some environment variables being set. One of them is KeyValtName and the other KeyVaultSecret. these values help the web api get the connection string to the database in a secure way, using azure keyvault. It goes beyond this workshop, but it is enough to know we pre-provisioned the keyvault in azure and with the data you provide here on the command-line you get the ability to securely retrieve the credentials form the keyvault. 
 
 Now run the following command:
 `kubectl apply -f webapi.yaml`
@@ -147,10 +147,10 @@ spec:
     protocol: TCP
     name: https
 ```
-And we push this configuration to the cluser with the commandline:
+And we push this configuration to the cluser with the command-line:
 `kubectl apply -f webapi-service.yaml`
 
-Now we have a service that we can access in the cluster with the DNS name `svc-leaderboardwebapi` so if we want to call the api from another service in the cluster (your web app) then you can use the uri: http://svc-leaderboardwebapi
+Now we have a service that we can access in the cluster with the DNS name `svc-leaderboardwebapi` so if we want to call the API from another service in the cluster (your web app) then you can use the uri: http://svc-leaderboardwebapi
 
 ### Deploy the web application
 Now that we have the webAPI running we can now create the web application container. For this we are going to create a yaml file with the name webapplication.yaml that contains the following:
@@ -196,9 +196,9 @@ spec:
 
 ><b>Note:</b> In the environment variables you see the value for `LeaderboardApiOptions_BaseUrl` and that points to the service we just created. This enables the web application to call into one of many pods that provide the Api in the cluster depending on the number of replicas we specified. The service is a stable name, while pod names will vary all the time.
 
-We also want to expose this web application to the outside world. If we want to access the application from outside the cluster we can define the service to be of type `LoadBalancer` which will then initiate the external azure load balancer to get a public IP address instead of a cluster IP address, so we can access it from outside the cluster.
+We also want to expose this web application to the outside world. If we want to access the application from outside the cluster we can define the service to be of type `LoadBalancer` which will then initiate the external Azure load balancer to get a public IP address instead of a cluster IP address, so we can access it from outside the cluster.
 
-Creat the following yaml file with the name webapp-service.yaml
+Create the following yaml file with the name webapp-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
@@ -235,10 +235,10 @@ NAME                    TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)   
 svc-gamingwebapp        LoadBalancer   10.0.253.192   20.191.49.177   80:31551/TCP,443:31943/TCP   22s
 svc-leaderboardwebapi   ClusterIP      10.0.108.174   <none>          80/TCP,443/TCP               15m
 ```
-HEre you can see bot the internal service that exposes the webAPI and the external service that has an external IP address assigned. 
+Here you can see both the internal service that exposes the webAPI and the external service that has an external IP address assigned. 
 If the results for the webapp service states status: pending, then it is still waiting for the external load balancer to reconfigure. retry the command until you see an external IP address that you can browse to validate the website is up and running. 
 
-If all is running according to expectations, then we shoud see the following end result in the browser, when you browse to the external IP address:
+If all is running according to expectations, then we should see the following end result in the browser when you browse to the external IP address:
 
 <img src="images\screenshot.PNG">
 
