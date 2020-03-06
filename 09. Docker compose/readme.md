@@ -3,25 +3,25 @@
 ## Exercise 09: Using Docker-compose to orchestrate multiple containers
 In this exercise we want you to experiment with Docker-compose. It is great that you can run one container, but what if you need more
 
-* First clone the github repository https://github.com/XpiritBV/vslive2020-cw in a directory on your local machine
-* Open the solution in Visual Studio and build
+* First clone the github repository https://github.com/XpiritBV/vslive2020-cw in a directory on your local machine (e.g. c:\temp\)
+* Open the solution in Visual Studio and build with Visual Studio 
 
 You can start the solution, but it will not run. There is no database, and there are dependencies in the projects. Let's try to solve that with Docker
-* Switch you Docker client to use Linux containers by using the icon in the tray
+* Switch your Docker client to use Linux containers by using the icon in the tray. Right click the whale icon and select Switch to Linux containers) 
 
 ## Run a SQL Server container
 
 Instead of running SQL on your local machine, a convenient and fast way to have new and fresh database is to run SQL in a container. There are standard images for that. Find the image on Docker hub and start the container
 
-- navigate to Docker hub and search for SQL Server
-- You will find this page  https://hub.docker.com/_/microsoft-mssql-server
-- Start the SQL Server container as described 
+- Navigate to [Docker Hub](https://hub.docker.com) and search for SQL Server
+- You will find this page [](https://hub.docker.com/_/microsoft-mssql-server)
+- Start the SQL Server container as described on Docker hub
 > pay attention that the environment variables need to be enclosed in double quotes " " on windows
 
 ```
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Pass@word" -p 5433:1433 -ti mcr.microsoft.com/mssql/server:2017-latest
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Pass@word" -p 5433:1433 --name sqldocker -ti mcr.microsoft.com/mssql/server:2017-latest
 ```
-- Use Visual Studio to connect to the SQL Server using localhost, 5433
+- (Optionally) Use Visual Studio Server Explorer to connect to the SQL Server using localhost, 5433
 - Modify the appsettings.json of the Leaderboard.webapi project to point to localhost,5433 and run the project. Try to run the Get scores and test the results
 
 ## Running the application in containers
@@ -43,7 +43,7 @@ docker run -d -p 5000:80 vslive/leaderboard.webapi
 > What do you think is wrong?
 
 
-- Change name of sql server in connectionstring to sqldocker (or name of sqlcontainer)
+- Change name of SQL server in connectionstring to sqldocker (or the generated name of the SQL container)
 - Build and run the container again
 
 ## Create or use compose file
