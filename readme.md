@@ -1,6 +1,6 @@
 # Hands-on labs Introduction to Docker
 
-In this repository, you find exercises for the Docker Hands-On parts of the workshop
+In this repository, you find exercises for the Docker Hands-On parts of the workshop. First clone this Git Repo on your local machine. Some of the folders contain files you need to use in exercises
 
 - [01. Run a Docker container on Windows](01.%20Run%20a%20docker%20container%20on%20Windows)
 - [02. Docker basic commands](02.%20Docker%20basic%20commands)
