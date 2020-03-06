@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: student089
+  name: dep-leaderboardwebapi
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: leaderboardwebapi
+    spec:
+      containers:
+      - name: leaderboardwebapi
+        terminationMessagePath: "/tmp/leaderboardwebapi-log"
+        image: xpiritbv/leaderboard.webapi
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://0.0.0.0:80
+        - name: ApplicationInsights__InstrumentationKey
+          value: 59cf101a-97fa-481d-b1aa-f13e6dc14767
+        - name: KeyVaultName
+          value: https://retrogamevault.vault.azure.net/
+        - name: KeyVaultClientSecret
+          value: 2Qfo[?L3_e?oKu3ZEzyfcdZ31-LMip3L
+        - name: KeyVaultClientID
+          value: dc16d1f8-655f-4e1b-ae6e-362504f4521b
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            cpu: "0.10"
+      nodeSelector:
+        beta.kubernetes.io/os: linux
