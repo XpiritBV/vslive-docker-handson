@@ -27,13 +27,13 @@ When you see this result, you know you can connect to the available cluster.
 Now we want to deploy our set of containers to the cluster. This means we need to take the following steps:
 
 1) We create a namespace where we want all the containers to reside. You create a namespace that is unique amongst all students, so please use the number postfix that you also used for your virtual machine.
-2) You create a deployment for your webAPI container
-3) You expose the webapi container(s) via a service and give it a name that can be found through DNS in the cluster
-4) you create a deployment for your web frontend and pass it in the name of the service that exposes your api in the cluster
+2) You create a deployment for your WebAPI container
+3) You expose the WebAPI container(s) via a service and give it a name that can be found through DNS in the cluster
+4) you create a deployment for your web frontend and pass it in the name of the service that exposes your API in the cluster
 5) You create a service that exposes your web frontend outside the cluster via the load balancer
 
 ### Creating the namespace
-We can create a namespace using the command line by issuing the following command:
+We can create a namespace using the command line by typing the following command:
 `kubectl create namespace student<your unique number>`
 
 You can also create a yaml file, with the name `mynamespace.yaml` with the following contents:
@@ -48,8 +48,8 @@ Next you issue the following commandline:
 
 Both will have the same result. We prefer to use the file, since it makes things more reproducible
 
-### Deploy the webApi
-We already pre-cooked a container image for you and pushed this to the docker hub. We can now define in a yaml specification we want to deploy our web api service. for this create a yaml file with the name `webapi.yaml` and paste in the following contents:
+### Deploy the WebAPI
+We already pre-cooked a container image for you and pushed this to the docker hub. We can now define in a yaml specification we want to deploy our WebAPI service. for this create a yaml file with the name `webapi.yaml` and paste in the following contents:
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -107,7 +107,7 @@ spec:
 ```
 Please don't forget to replace the namespace with the correct number of the namespace you created.
 
-><b>note:</b> In the specification you see some environment variables being set. One of them is KeyValtName and the other KeyVaultSecret. these values help the web api get the connection string to the database in a secure way, using azure keyvault. It goes beyond this workshop, but it is enough to know we pre-provisioned the keyvault in azure and with the data you provide here on the command-line you get the ability to securely retrieve the credentials form the keyvault. 
+><b>note:</b> In the specification you see some environment variables being set. One of them is KeyValtName and the other KeyVaultSecret. these values help the WebAPI get the connection string to the database in a secure way, using azure keyvault. It goes beyond this workshop, but it is enough to know we pre-provisioned the keyvault in azure and with the data you provide here on the command-line you get the ability to securely retrieve the credentials form the keyvault. 
 
 Now run the following command:
 `kubectl apply -f webapi.yaml`
@@ -153,7 +153,7 @@ And we push this configuration to the cluser with the command-line:
 Now we have a service that we can access in the cluster with the DNS name `svc-leaderboardwebapi` so if we want to call the API from another service in the cluster (your web app) then you can use the uri: http://svc-leaderboardwebapi
 
 ### Deploy the web application
-Now that we have the webAPI running we can now create the web application container. For this we are going to create a yaml file with the name webapplication.yaml that contains the following:
+Now that we have the WebAPI running we can now create the web application container. For this we are going to create a yaml file with the name webapplication.yaml that contains the following:
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -194,7 +194,7 @@ spec:
         beta.kubernetes.io/os: linux
 ```
 
-><b>Note:</b> In the environment variables you see the value for `LeaderboardApiOptions_BaseUrl` and that points to the service we just created. This enables the web application to call into one of many pods that provide the Api in the cluster depending on the number of replicas we specified. The service is a stable name, while pod names will vary all the time.
+><b>Note:</b> In the environment variables you see the value for `LeaderboardApiOptions_BaseUrl` and that points to the service we just created. This enables the web application to call into one of many pods that provide the API in the cluster depending on the number of replicas we specified. The service is a stable name, while pod names will vary all the time.
 
 We also want to expose this web application to the outside world. If we want to access the application from outside the cluster we can define the service to be of type `LoadBalancer` which will then initiate the external Azure load balancer to get a public IP address instead of a cluster IP address, so we can access it from outside the cluster.
 
@@ -235,7 +235,7 @@ NAME                    TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)   
 svc-gamingwebapp        LoadBalancer   10.0.253.192   20.191.49.177   80:31551/TCP,443:31943/TCP   22s
 svc-leaderboardwebapi   ClusterIP      10.0.108.174   <none>          80/TCP,443/TCP               15m
 ```
-Here you can see both the internal service that exposes the webAPI and the external service that has an external IP address assigned. 
+Here you can see both the internal service that exposes the WebAPI and the external service that has an external IP address assigned. 
 If the results for the webapp service states status: pending, then it is still waiting for the external load balancer to reconfigure. retry the command until you see an external IP address that you can browse to validate the website is up and running. 
 
 If all is running according to expectations, then we should see the following end result in the browser when you browse to the external IP address:
@@ -243,7 +243,7 @@ If all is running according to expectations, then we should see the following en
 <img src="images\screenshot.PNG">
 
 ## Scaling your frontend
-Now we have one instance of the web application running and one instance of our webAPI. It is now rather easy to scale our deployment to have more containers.
+Now we have one instance of the web application running and one instance of our WebAPI. It is now rather easy to scale our deployment to have more containers.
 
 To scale our web application to e.g. 5 instances, we can issue the following command:
 `kubectl scale --replicas 5 deployments/dep-gamingwebapp --namespace student<your unique number>`
