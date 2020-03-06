@@ -5,6 +5,7 @@ In this exercise we want you to experiment with Docker-compose. It is great that
 
 * First clone the github repository https://github.com/XpiritBV/vslive2020-cw in a directory on your local machine (e.g. c:\temp\)
 * Open the solution in Visual Studio and build with Visual Studio 
+> Accept the generated IIS Express SSL Certificate
 
 You can start the solution, but it will not run. There is no database, and there are dependencies in the projects. Let's try to solve that with Docker
 * Switch your Docker client to use Linux containers by using the icon in the tray. Right click the whale icon and select Switch to Linux containers) 
@@ -49,7 +50,8 @@ docker run -d -p 5000:80 vslive/leaderboard.webapi
 ## Create or use compose file
 Now it is time to fit everything together. We want to start the UI, the API and the SQL Server together. Take a look at the compose file in the root directory.
 
-- code docker-compose.yml
+
+- In your command line type `code docker-compose.yml`
 > Read through all the settings and see what it means 
 
 - Start the composition
