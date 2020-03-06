@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: student089
+  namespace: student<your unique number>
   name: dep-gamingwebapp
 spec:
   replicas: 1

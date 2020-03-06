@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: student089
+  namespace: student<your unique number>
   name: svc-gamingwebapp
   labels:
     version: dev
