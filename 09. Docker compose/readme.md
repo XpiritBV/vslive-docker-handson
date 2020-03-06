@@ -14,7 +14,7 @@ You can start the solution, but it will not run. There is no database, and there
 Instead of running SQL on your local machine, a convenient and fast way to have new and fresh database is to run SQL in a container. There are standard images for that. Find the image on Docker hub and start the container
 
 - Navigate to [Docker Hub](https://hub.docker.com) and search for SQL Server
-- You will find this page [](https://hub.docker.com/_/microsoft-mssql-server)
+- You will find this page [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server)
 - Start the SQL Server container as described on Docker hub
 > pay attention that the environment variables need to be enclosed in double quotes " " on windows
 
