@@ -7,7 +7,7 @@ In this exercise, you will go through the steps of creating a new Container imag
 
 - Run a new container, add some files and exit the modified container
 ```
-docker run -it --name mycontainer mcr.microsoft.com/windows/servercore:1903 cmd
+docker run -it --name mycontainer mcr.microsoft.com/windows/servercore:1809 cmd
 md builddemo
 cd buidldemo
 copy con myfile.txt

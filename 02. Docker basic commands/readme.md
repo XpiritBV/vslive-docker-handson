@@ -28,12 +28,12 @@ docker search microsoft
 
 - Running a container in the background (-d)
 ```
-docker run -d mcr.microsoft.com/windows/servercore:1903
+docker run -d mcr.microsoft.com/windows/servercore:1809
 ```
 
 - Running a container interactively (-it)
 ```
-docker run -it mcr.microsoft.com/windows/servercore:1903
+docker run -it mcr.microsoft.com/windows/servercore:1809
 CTRL-P CTRL-Q
 ```
 

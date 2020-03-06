@@ -5,7 +5,7 @@ Files reside in the container. You cannot open them on your local machine. But h
 
 - Run a new container with the current directory as volume mapping (%CD% works only in the CMD and not in powershell!)
 ```
-docker run -ti -v %cd%:c:\data mcr.microsoft.com/windows/servercore:1903
+docker run -ti -v %cd%:c:\data mcr.microsoft.com/windows/servercore:1809
 ```
 
 - Modify the index.html file outside the container

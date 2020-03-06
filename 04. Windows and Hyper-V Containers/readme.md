@@ -9,13 +9,13 @@ Windows can run containers in 2 ways. The normal "shared kernel" way, like on Li
 - Start a normal windows container
 - Look at the running processes, take note of the PID
 ```
-docker run -d --isolation process mcr.microsoft.com/windows/servercore:1903 ping localhost -t
+docker run -d --isolation process mcr.microsoft.com/windows/servercore:1809 ping localhost -t
 docker top [containerid]
 ```
 
 - Start a hyper-v container
 ```
-docker run --isolation hyperv -d mcr.microsoft.com/windows/servercore:1903 ping localhost -t
+docker run --isolation hyperv -d mcr.microsoft.com/windows/servercore:1809 ping localhost -t
 docker top [containerid]
 ```
 

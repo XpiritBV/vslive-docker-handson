@@ -23,7 +23,7 @@ Server: Docker Engine - Community
 Start by running a simple windows container with the command prompt in it.
 
 ```
-docker run -it mcr.microsoft.com/windows/servercore:1903 cmd
+docker run -it mcr.microsoft.com/windows/servercore:1809 cmd
 ```
 
 - Run the following commands inside the newly started container 
@@ -73,6 +73,6 @@ docker ps -a
 - Start a new windows container and validate that the file you created earlier is not in there
 
 ```
-docker run -it mcr.microsoft.com/windows/servercore:1903 cmd
+docker run -it mcr.microsoft.com/windows/servercore:1809 cmd
 dir
 ```
