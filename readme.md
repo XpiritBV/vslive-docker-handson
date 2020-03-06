@@ -1,6 +1,6 @@
 # Hands-on labs Introduction to Docker
 
-In this repository you find exercises for the Docker Hands-On parts of the workshop
+In this repository, you find exercises for the Docker Hands-On parts of the workshop
 
 - [01. Run a docker container on Windows](01.%20Run%20a%20docker%20container%20on%20Windows)
 - [02. Docker basic commands](02.%20Docker%20basic%20commands)
@@ -11,3 +11,4 @@ In this repository you find exercises for the Docker Hands-On parts of the works
 - [07. Running Linux Containers](07.%20Running%20Linux%20Containers)
 - [08. Setting up a network](08.%20Setting%20up%20a%20Network)
 - [09. Docker compose](09.%20Docker%20compose)
+- [10. Kubernetes](10.%20Kubernetes)
