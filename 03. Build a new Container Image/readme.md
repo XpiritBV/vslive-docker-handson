@@ -29,10 +29,10 @@ dir
 exit
 ```
 
-- If everythin went well, the file you created earlier is now part if the new container
+- If everything went well, the file you created earlier is now part if the new container
 
 ### Using the Docker build file
-- On your command line ensure you are in the folder 02. Build a new Container Image,  that contains Docker file (Dockerfile)
+- On your command line ensure you are in the folder 03. Build a new Container Image,  that contains Docker file (Dockerfile)
 - Build the Docker image from the Dockerfile
 - Find all images on your machines
 - Find the running container ID
