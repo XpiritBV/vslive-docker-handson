@@ -24,7 +24,7 @@ docker images
 ```
 docker search microsoft
 ```
-> There are a lot more Linux containers available. Checkout https://hub.docker.com to find base images. Right click the whale icon in your tray to switch to Linux containers and try Docker search <product> again. E.g. docker search   
+> There are a lot more Linux containers available. Checkout https://hub.docker.com to find base images. If you right-click the whale icon in your tray to switch to Linux containers and try Docker search <product> again. E.g. docker search. DON'T DO THIS AT THE MOMENT!
 
 - Running a container in the background (-d)
 ```
