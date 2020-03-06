@@ -22,7 +22,7 @@ exit
 
 ```
 docker ps -a
-docker commit mycontainerimage mycontainer 
+docker commit mycontainer mycontainer 
 docker images 
 docker run -it --name myowncontainer mycontainer cmd
 dir
